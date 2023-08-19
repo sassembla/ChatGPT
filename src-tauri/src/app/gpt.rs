@@ -13,6 +13,7 @@ use walkdir::WalkDir;
 pub fn get_chat_prompt_cmd() -> serde_json::Value {
   let path = utils::app_root().join("chat.prompt.cmd.json");
   let content = fs::read_to_string(path).unwrap_or_else(|_| r#"{"data":[]}"#.to_string());
+  println!("get_chat_prompt_cmd!!!"); // これは呼ばれてる瞬間があるが作成のタイミングっぽい？送信時には呼ばれてなさそう。
   serde_json::from_str(&content).unwrap()
 }
 
@@ -25,6 +26,7 @@ pub struct PromptBaseRecord {
 
 #[command]
 pub fn parse_prompt(data: String) -> Option<Vec<PromptBaseRecord>> {
+  println!("parse_prompt!!!");
   let mut rdr = csv::Reader::from_reader(data.as_bytes());
   let mut list = vec![];
 
