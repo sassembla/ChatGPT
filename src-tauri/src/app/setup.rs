@@ -87,6 +87,7 @@ pub fn init(app: &mut App) -> Result<(), Box<dyn std::error::Error>> {
           .hidden_title(true);
       }
 
+      println!("この辺通ってる");
       if url == "https://chat.openai.com" {
         main_win = main_win
           .initialization_script(include_str!("../vendors/floating-ui-core.js"))
